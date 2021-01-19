@@ -31,9 +31,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ```
 
 ### Make ArgoCD API Server accessible
-Patch ArgoCD to use `LoadBalancer` instead of `ClusterIP` in order to make ArgoCD API Server accessible
+Patch ArgoCD service
 ```
-kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 ```
 
 ### Ingress for ingress-nginx

@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+spec:
+  externalTrafficPolicy: Cluster # change this from Local to Cluster
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: ingress-nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: https
+      port: 443
+      targetPort: https
